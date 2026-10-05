@@ -1,0 +1,19 @@
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: var(--layer-background);
+  overflow: hidden;
+  pointer-events: none;
+  background: #ffffff;
+}
+
+.block {
+  position: absolute;
+  background: #000;
+}
+
+.pictureBlock {
+  background:
+    linear-gradient(rgb(0 0 0 / 55%), rgb(0 0 0 / 55%)),
+    url("/home_background.jpg") center top / cover no-repeat;
+}

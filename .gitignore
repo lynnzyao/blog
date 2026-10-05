@@ -1,0 +1,12 @@
+# cpp
+build
+
+# react.ts
+
+# macos
+.DS_Store
+._*
+._.*
+
+# agent
+.agent

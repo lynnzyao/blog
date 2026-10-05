@@ -1,0 +1,16 @@
+.body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+}
+
+.content {
+  position: relative;
+  z-index: var(--layer-shell);
+}
+
+.section {
+  position: relative;
+  min-width: 0;
+  display: flow-root;
+}
