@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal blog
 
-## Getting Started
-
-First, run the development server:
+This Next.js application builds a static website for Cloudflare Pages or Workers.
+Run commands from `web/` using Node.js 22:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Production build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The complete site is exported to `out/`, including HTML, JavaScript, CSS, images,
+and a 404 page. `out/` is generated and ignored by Git. Images are served directly
+without a Next.js image optimization server. `next start` does not support this
+export; use a static file server or the Workers preview below.
 
-## Learn More
+## Cloudflare Pages with GitHub
 
-To learn more about Next.js, take a look at the following resources:
+Push this repository to GitHub, then create a Pages project in Cloudflare and
+connect the repository. Set:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Setting | Value |
+| --- | --- |
+| Root directory | `web` |
+| Framework preset | Next.js (Static HTML Export) |
+| Build command | `npm run build` |
+| Build output directory | `out` |
+| Environment variable | `NODE_VERSION=22` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Choose your production branch. Cloudflare installs dependencies, builds the site,
+and publishes it on subsequent pushes. Pages serves `out/` directly; the Workers
+configuration in `wrangler.jsonc` is for the alternative workflow below.
 
-## Deploy on Vercel
+## Cloudflare Workers with GitHub
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a Worker connected to the GitHub repository and set:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Setting | Value |
+| --- | --- |
+| Root directory | `web` |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler@4 deploy` |
+| Environment variable | `NODE_VERSION=22` |
+
+Use `lynn-blog` as the Worker name, or change `name` in `wrangler.jsonc` to match
+your Cloudflare Worker. Wrangler uploads `out/` as static assets; no Worker script
+or Next.js runtime adapter is needed. Unknown routes serve the exported 404 page
+with HTTP 404 rather than falling back to the homepage.
+
+For a local Cloudflare preview after building:
+
+```bash
+npx wrangler@4 dev
+```
+
+For a manual deployment, authenticate with `npx wrangler@4 login`, build the site,
+then run `npx wrangler@4 deploy`. These commands download Wrangler if necessary.
+
+## Current scope
+
+Only the homepage is implemented. Links to future posts and project pages return
+404 until those routes are added. The subscription form currently displays a
+placeholder message and does not save email addresses. Future dynamic routes
+must provide `generateStaticParams()` to be exported; request-time server features
+and Server Actions require a different deployment setup.
+
+## References
+
+- [Cloudflare Pages: static Next.js](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/)
+- [Cloudflare Workers: static sites and 404 pages](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/)
