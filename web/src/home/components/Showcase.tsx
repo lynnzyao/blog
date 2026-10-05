@@ -3,13 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import type { PostSummary } from "@/content/types";
 import styles from "./Showcase.module.css";
-
-const slides = [
-  { title: "Why I started writing my own blog?", date: "September 8, 2018", dateTime: "2018-09-08", image: "/showcase/slide-1.jpg", alt: "A canoe on a quiet mountain lake", href: "/posts/why-i-started-writing" },
-  { title: "Architectures of quiet contemplative shelter", date: "October 14, 2018", dateTime: "2018-10-14", image: "/showcase/slide-2.jpg", alt: "An alpine lake surrounded by mountains", href: "/posts/quiet-contemplative-shelter" },
-  { title: "Crossing the high pass before winter locks in", date: "November 2, 2018", dateTime: "2018-11-02", image: "/showcase/slide-3.jpg", alt: "Mountain peaks in the light of sunrise", href: "/posts/crossing-the-high-pass" },
-];
 
 function Chevron({ previous = false }: { previous?: boolean }) {
   return (
@@ -19,10 +14,12 @@ function Chevron({ previous = false }: { previous?: boolean }) {
   );
 }
 
-export function Showcase() {
+export function Showcase({ slides }: { slides: PostSummary[] }) {
   const [index, setIndex] = useState(0);
   const slide = slides[index];
   const move = (offset: number) => setIndex((current) => Math.max(0, Math.min(slides.length - 1, current + offset)));
+
+  if (!slide) return null;
 
   return (
     <section
@@ -42,7 +39,7 @@ export function Showcase() {
           <span className={styles.counter} aria-hidden="true">{index + 1}/{slides.length}</span>
         </div>
         <div className={styles.card} id="showcase-card">
-          <time className={styles.date} dateTime={slide.dateTime}>{slide.date}</time>
+          <time className={styles.date} dateTime={slide.date}>{slide.dateLabel}</time>
           <h1 className={styles.title}>{slide.title}</h1>
           <Link className={styles.articleLink} href={slide.href}>
             Read article <span aria-hidden="true">→</span>

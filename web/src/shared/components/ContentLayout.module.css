@@ -1,0 +1,5 @@
+.main {
+  min-height: 70svh;
+  padding: var(--section-gap) var(--content-gutter);
+  background: #fffff0;
+}

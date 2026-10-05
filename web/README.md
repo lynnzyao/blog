@@ -63,8 +63,10 @@ then run `npx wrangler@4 deploy`. These commands download Wrangler if necessary.
 
 ## Current scope
 
-Only the homepage is implemented. Links to future posts and project pages return
-404 until those routes are added. The subscription form currently displays a
+The homepage, `/posts/`, individual Markdown posts, `/projects/`, and individual
+project pages are statically generated. Edit posts and projects in `content/`;
+see [the content guide](content/README.md) for file formats and image placement.
+The subscription form currently displays a
 placeholder message and does not save email addresses. Future dynamic routes
 must provide `generateStaticParams()` to be exported; request-time server features
 and Server Actions require a different deployment setup.

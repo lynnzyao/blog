@@ -49,23 +49,33 @@ load. Some component-specific colors, such as disabled arrows, stay in modules.
 | `src/home/HomeLayers.tsx` | Passes layout parameters to both layers |
 | `src/home/HomePage.module.css` | Foreground flow and absolute background stacking |
 | `components/BackgroundLayer.module.css` | White background, photograph in the first block, and solid black remaining blocks |
-| `components/Header.module.css` | Name block and navigation |
+| `src/shared/components/Header.module.css` | Name block and navigation |
 | `components/Showcase.module.css` | Overlapping title card, picture, carousel controls |
 | `components/RecentPosts.module.css` | Floating blog panel and responsive article grid |
 | `components/Projects.module.css` | Floating projects panel, columns, and study links |
-| `components/GlobalView.module.css` | Full-width white section with constrained inner content |
-| `components/Subscribe.module.css` | Floating subscription panel and form |
+| `components/GlobalView.module.css` | Floating white panel aligned with Projects and Recent Posts |
+| `src/shared/components/Footer.module.css` | Full-width white footer with constrained inner content and form |
 
-The component paths above are relative to `src/home/`.
+Paths beginning with `components/` are relative to `src/home/`. Header and Footer
+live in `src/shared/components/` for reuse across pages.
 
-Recent Posts, Projects, and Subscribe share the same dimensions: a maximum width
-of 1280px with 88px outer margins on desktop; 24px margins at widths up to 900px;
-16px margins at widths up to 600px. Their padding and bottom gaps shrink on small
-screens. These values currently live in each module; update all three if changing
-their shared alignment. Global View's white surface spans the page, while its
-inner content follows those same margins and padding.
+Header, Showcase, Recent Posts, Projects, Global View, and Footer content use
+shared alignment tokens in `globals.css`: `--content-max-width` is 1200px and
+`--content-gutter` is 120px on desktop, 40px at widths up to 900px, and 24px at
+widths up to 600px. `--section-gap` equals `--header-height`: initially 64px on
+desktop and 56px on mobile, then updated to the header's measured height.
+The same gap separates the header from the showcase and each following section.
+Footer has a full-width white background outside the main content and background
+layers; its inner content follows the shared alignment. Component padding still
+shrinks on smaller screens.
 
 ## How the layers work
+
+The header reserves its measured height with a wrapper before the home body.
+`Header.tsx` uses a `ResizeObserver` to update that space when navigation wraps,
+fonts load, or the viewport changes, and publishes that height as `--header-height`
+so section gaps follow it. Before client initialization, the header
+stays in normal document flow; after measurement it is fixed at the top.
 
 The header is followed by a relatively positioned home body. That body uses
 `isolation: isolate` to keep its stacking context self-contained:

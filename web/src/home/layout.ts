@@ -15,5 +15,4 @@ export const homeLayout: HomeSectionLayout[] = [
   { id: "recent-posts", height: "auto", foreground: {} },
   { id: "projects", height: "auto", foreground: {} },
   { id: "global-view", height: "auto", foreground: {} },
-  { id: "subscribe", height: "auto", foreground: {} },
 ];

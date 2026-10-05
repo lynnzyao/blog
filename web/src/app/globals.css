@@ -12,6 +12,12 @@
   --line: #e3e5e6;
   --page-background: #0b1014;
 
+  /* Shared content alignment and space between home sections. */
+  --content-gutter: 120px;
+  --content-max-width: 1200px;
+  --header-height: 64px;
+  --section-gap: var(--header-height);
+
   /* Font families; sizes and weights belong to the individual components. */
   --font-body: "Inter", sans-serif;
   --font-display: "Playfair Display", serif;
@@ -68,5 +74,18 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  :root {
+    --content-gutter: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --content-gutter: 24px;
+    --header-height: 56px;
   }
 }

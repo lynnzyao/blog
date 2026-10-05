@@ -1,39 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { PostSummary } from "@/content/types";
 import styles from "./RecentPosts.module.css";
 
-const posts = [
-  {
-    title: "Crossing the high pass before winter locks in",
-    href: "/posts/crossing-the-high-pass",
-    image: "/showcase/slide-3.jpg",
-    alt: "Mountain peaks catching the first light of sunrise",
-    excerpt: "A field journal of granite ridges, falling temperatures, and the quiet clarity of the alpine treeline. Notes from a journey made just before the seasons turn.",
-    readingMinutes: 8,
-  },
-  {
-    title: "Architectures of quiet contemplative shelter",
-    href: "/posts/quiet-contemplative-shelter",
-    image: "/showcase/slide-2.jpg",
-    alt: "An alpine lake beneath snow-covered mountains",
-    excerpt: "On timber cantilevers, deep overhangs, and spaces that frame the landscape. Exploring how a thoughtful shelter can bring us closer to the world outside.",
-    readingMinutes: 6,
-  },
-  {
-    title: "Why I started writing my own blog?",
-    href: "/posts/why-i-started-writing",
-    image: "/showcase/slide-1.jpg",
-    alt: "A lone canoe floating on a still mountain lake",
-    excerpt: "Making room for slower observations and stories worth keeping. A reflection on independent publishing, personal archives, and the simple practice of paying attention.",
-    readingMinutes: 4,
-  },
-] as const;
-
-export function RecentPosts() {
+export function RecentPosts({ posts }: { posts: PostSummary[] }) {
   return (
     <section className={styles.section} aria-labelledby="recent-posts-title">
       <div className={styles.heading}>
-        <h2 id="recent-posts-title" className={styles.title}>Most recent blog posts</h2>
+        <h2 id="recent-posts-title" className={styles.title}>Recent Posts</h2>
         <Link className={styles.browse} href="/posts">
           Browse all blog posts <span aria-hidden="true">→</span>
         </Link>
