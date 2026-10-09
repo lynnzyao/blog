@@ -19,6 +19,7 @@ date: "2026-10-06"
 image: "/posts/my-next-story/cover.jpg"
 alt: "Describe what the cover photograph shows"
 excerpt: "A short introduction used in the homepage and post list."
+category: "Field Studies"
 featured: true
 ---
 
@@ -38,7 +39,8 @@ appear inside the article. Use `##` for body headings because the template rende
 the title as the page's `h1`.
 
 Required fields: `title`, quoted `date` in YYYY-MM-DD format, `image`, `alt`, and
-`excerpt`. `featured` is optional and defaults to false. The homepage shows the
+`excerpt`. `category` is optional and defaults to "Journal"; the archive derives
+its topic filters and counts from these values. `featured` is optional and defaults to false. The homepage shows the
 three newest posts and a carousel of featured posts (or the three newest if none
 are featured). Reading time is calculated from the body, at 200 words per minute.
 
@@ -61,7 +63,12 @@ local detail page URL. For example:
   "year": "2026",
   "title": "My application",
   "description": "What the project does and why I made it.",
-  "href": "https://github.com/your-name/your-project"
+  "href": "https://github.com/your-name/your-project",
+  "category": "Applications",
+  "image": "/projects/my-application/cover.jpg",
+  "alt": "Describe the project cover",
+  "featured": true,
+  "specifications": "An optional short summary of materials or technical details"
 }
 ```
 
@@ -69,6 +76,14 @@ Set `href` to your deployed website, web app, GitHub repository, or a local path
 Use an `https://` URL for external destinations. Set it to `null` (or omit it) to
 link to the local detail page until an external destination is available. The
 existing examples use this fallback rather than invented external URLs.
+
+Optional project fields: `category` (defaults to "Projects"), `image` (a local
+public path), `alt` (required when an image is supplied), `featured` (defaults to
+false), and `specifications`. Projects without a cover render a typographic card.
+The projects index derives category filters and counts from the content. Its
+feature uses the first featured project, or the first project when none is marked.
+The posts index supports topic filtering, date/reading-time sorting, and grid/list
+views. Both indexes show all entries without placeholder pagination or metrics.
 
 Projects are ordered by `number`. The homepage shows the first three, while
 `/projects/` lists all projects. Keep numbers and years as quoted strings.

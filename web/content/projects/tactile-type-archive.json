@@ -3,5 +3,9 @@
   "year": "2024",
   "title": "Tactile Type Archive",
   "description": "Monochrome letterpress specimen documenting mid-century European grotesk and humanist serif revivals.",
-  "href": null
+  "href": null,
+  "image": "/showcase/slide-1.jpg",
+  "alt": "A canoe on a still mountain lake",
+  "category": "Bound Monographs",
+  "featured": false
 }

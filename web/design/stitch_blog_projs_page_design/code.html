@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overscroll-behavior: none;
+    }
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary": "#000000",
+          "inverse-primary": "#c3c7cc",
+          "surface-dim": "#d9dadb",
+          "on-primary-container": "#808489",
+          "primary-container": "#181c20",
+          "inverse-surface": "#2e3132",
+          "on-secondary-fixed": "#1b1c1c",
+          "on-primary-fixed": "#181c20",
+          "error": "#ba1a1a",
+          "secondary-container": "#e3e2e2",
+          "primary-fixed": "#e0e3e8",
+          "surface-container": "#edeeef",
+          "surface-variant": "#e1e3e4",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed": "#f0dfd5",
+          "surface-container-highest": "#e1e3e4",
+          "on-tertiary-fixed": "#221a14",
+          "on-surface-variant": "#44474a",
+          "on-error": "#ffffff",
+          "secondary": "#5e5e5e",
+          "secondary-fixed-dim": "#c7c6c6",
+          "outline": "#75777b",
+          "on-secondary-fixed-variant": "#464747",
+          "on-primary-fixed-variant": "#43474c",
+          "surface-container-high": "#e7e8e9",
+          "on-tertiary-fixed-variant": "#4f453d",
+          "background": "#f8f9fa",
+          "surface-tint": "#5b5f63",
+          "on-background": "#191c1d",
+          "on-error-container": "#93000a",
+          "primary": "#000000",
+          "secondary-fixed": "#e3e2e2",
+          "primary-fixed-dim": "#c3c7cc",
+          "surface-bright": "#f8f9fa",
+          "tertiary-fixed-dim": "#d3c4ba",
+          "on-surface": "#191c1d",
+          "surface-container-low": "#f3f4f5",
+          "tertiary-container": "#221a14",
+          "outline-variant": "#c5c6ca",
+          "surface": "#f8f9fa",
+          "error-container": "#ffdad6",
+          "on-secondary-container": "#646464",
+          "inverse-on-surface": "#f0f1f2",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary": "#ffffff",
+          "on-primary": "#ffffff",
+          "on-tertiary-container": "#8e8179"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "2rem",
+          "space-lg": "1.75rem",
+          "space-md": "1rem",
+          "margin": "4rem",
+          "space-xl": "3rem"
+        },
+        "fontFamily": {
+          "headline-sm": ["Playfair Display", "serif"],
+          "display-lg": ["Playfair Display", "serif"],
+          "headline-md": ["Playfair Display", "serif"],
+          "body-md": ["Inter", "sans-serif"],
+          "headline-lg-mobile": ["Playfair Display", "serif"],
+          "display-lg-mobile": ["Playfair Display", "serif"],
+          "label-sm": ["Inter", "sans-serif"],
+          "label-lg": ["Inter", "sans-serif"],
+          "body-sm": ["Inter", "sans-serif"],
+          "label-md": ["Inter", "sans-serif"],
+          "body-lg": ["Inter", "sans-serif"],
+          "headline-lg": ["Playfair Display", "serif"]
+        },
+        "fontSize": {
+          "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+          "headline-md": ["22px", {"lineHeight": "30px", "fontWeight": "500"}],
+          "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+          "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+          "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+          "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "label-lg": ["13px", {"lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+          "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+          "label-md": ["11px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="min-h-screen bg-background text-on-surface antialiased font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TOP ARCHIVAL HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-surface-container">
+<div class="h-20 max-w-[1320px] mx-auto px-6 lg:px-8 flex items-center justify-between">
+<!-- Left: Solid Black Block Wordmark -->
+<a class="flex items-center self-stretch" data-path="home" href="#" title="Monograph Home">
+<div class="h-full px-6 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm tracking-widest uppercase">
+          MONOGRAPH
+        </div>
+</a>
+<!-- Right: Words-only Navigation -->
+<nav class="flex items-center gap-8 md:gap-12" data-active-classes="text-on-surface border-b-2 border-primary pb-0.5 font-semibold">
+<a class="font-label-lg text-label-lg tracking-wide text-secondary hover:text-on-surface transition-colors duration-150" data-path="home" href="#">Home</a>
+<a class="font-label-lg text-label-lg tracking-wide text-secondary hover:text-on-surface transition-colors duration-150" data-path="all-posts" href="#">All Posts</a>
+<a aria-current="page" class="tracking-wide transition-colors duration-150 text-on-surface border-b-2 border-primary pb-0.5 font-semibold" data-path="all-projects" href="#">Projects</a>
+</nav>
+</div>
+</header>
+<!-- MAIN CONTENT CONTAINER (pt-20 matches header h-20 exactly) -->
+<main class="pt-20 min-h-[calc(100vh-80px)] w-full">
+<div class="flex flex-col w-full relative">
+<!-- ATMOSPHERIC BACKGROUND TEXTURES & ARCHITECTURAL GUIDES -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+<div class="absolute top-24 left-8 w-px h-[1600px] bg-surface-container opacity-60"></div>
+<div class="absolute top-24 right-8 w-px h-[1600px] bg-surface-container opacity-60"></div>
+<div class="absolute top-[480px] -left-20 w-96 h-96 bg-surface-container-high/40 rounded-full blur-3xl"></div>
+<div class="absolute top-[1200px] -right-20 w-[500px] h-[500px] bg-surface-variant/30 rounded-full blur-3xl"></div>
+</div>
+<!-- SECTION 1: EDITORIAL HEADER & FILTER BAR -->
+<section class="relative z-10 w-full px-6 lg:px-12 pt-12 pb-10 max-w-[1360px] mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-10 border-b border-surface-container">
+<div class="max-w-2xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="inline-block w-2.5 h-2.5 bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">
+            SELECTED ARCHIVE &amp; COMMISSIONED EDITIONS (2020 — 2025)
+          </span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-none mb-6">
+          Projects &amp; Monographs
+        </h1>
+<p class="font-body-lg text-body-lg text-secondary leading-relaxed max-w-xl">
+          Physical publications, tactile print experiments, architectural installations, and cartographic explorations commissioned by Monograph Studio.
+        </p>
+</div>
+<!-- Live Category Filter Controls -->
+<div class="flex flex-wrap items-center gap-2" id="filter-container">
+<button class="filter-btn px-4 py-2 bg-primary text-on-primary font-label-md text-label-md tracking-wider uppercase transition-all shadow-sm" data-filter="all" onclick="filterProjects('all')">
+          All Works (24)
+        </button>
+<button class="filter-btn px-4 py-2 bg-surface-container-low text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md tracking-wider uppercase transition-all" data-filter="bound" onclick="filterProjects('bound')">
+          Bound Monographs (10)
+        </button>
+<button class="filter-btn px-4 py-2 bg-surface-container-low text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md tracking-wider uppercase transition-all" data-filter="field" onclick="filterProjects('field')">
+          Architectural Fieldworks (8)
+        </button>
+<button class="filter-btn px-4 py-2 bg-surface-container-low text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md tracking-wider uppercase transition-all" data-filter="spatial" onclick="filterProjects('spatial')">
+          Spatial Installations (6)
+        </button>
+</div>
+</div>
+</section>
+<!-- SECTION 2: LEAD FEATURED MONOGRAPH (SIGNATURE LAYERED SHOWCASE) -->
+<section class="relative z-10 w-full px-6 lg:px-12 py-10 max-w-[1360px] mx-auto">
+<div class="relative w-full min-h-[580px] lg:h-[640px] flex flex-col justify-end">
+<!-- Media Layer (Base Split Stage) -->
+<div class="w-full lg:w-[82%] ml-auto h-[400px] lg:h-full relative overflow-hidden bg-surface-container-high shadow-lg">
+<img class="w-full h-full object-cover grayscale contrast-105" data-alt="Monochrome architectural photography of Nordic timber shelter perched on jagged coastal rock in Lofoten Arctic Circle, raw weathered spruce texture, sharp slate cliffs, misty North Atlantic ocean under low diffuse winter light, minimalist editorial composition, pure architectural publication aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3WHJpEa8FMk-wGrv3kfveEwiYloXRg25v6e1ji9mCAo3NzpzaylhxKhSKDrt0Jpc7zyseOcSs6H0BOOVmXlxt83ktJbu2Q3NpIuknp4B2AbqYThMiRU97pxOF14gSEhS2FBCQZanRbrG6nW4DOccM5gfa_3255l4gLqsFMDZ3JYdVR6lKep-yCWMeGRhHe66WSO84umiZYa6dMpsPlVO0FLWTSmNoDu2fD0WvviyFEeGtKdRTL37Zqw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent lg:hidden"></div>
+<div class="absolute top-6 right-6 hidden lg:flex items-center gap-4 bg-primary/80 backdrop-blur-sm px-4 py-2 text-on-primary">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Plate 09-A / Lofoten Archival Series</span>
+<span class="font-label-sm text-label-sm opacity-60">68°09'N 13°32'E</span>
+</div>
+</div>
+<!-- Elevated Floating Docket Card (Layered Forefront Overlap) -->
+<div class="relative lg:absolute lg:top-12 lg:left-0 z-20 w-full lg:w-[48%] bg-surface-container-lowest p-8 lg:p-12 shadow-xl -mt-16 lg:mt-0">
+<div class="flex items-center justify-between gap-4 mb-6">
+<div class="inline-flex items-center gap-2 bg-surface-container-low px-3 py-1">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface">
+              MONOGRAPH NO. 09 / 2025 EDITION
+            </span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary">
+            Archive Vol. VII
+          </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6 leading-tight">
+          Nordic Pavilion Shelter &amp; Coastal Lofoten Studies
+        </h2>
+<!-- Specifications Strip -->
+<div class="bg-surface-container-low p-4 mb-6 space-y-1.5">
+<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Publication Specifications</div>
+<div class="font-body-sm text-body-sm text-on-surface font-medium">
+            Clothbound Hardcover, 240mm × 320mm | 184 Pages | Munken Lynx 150gsm
+          </div>
+<div class="font-body-sm text-body-sm text-secondary">
+            Duotone black &amp; metallic warm grey lithography with blind-embossed spine.
+          </div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-8">
+          A comprehensive photographic and architectural investigation into micro-climates, raw timber joinery, and thermal comfort in the Arctic Circle. Produced over three consecutive winter solstices.
+        </p>
+<!-- Actions -->
+<div class="flex flex-wrap items-center gap-4 pt-2">
+<a class="inline-flex items-center gap-3 px-6 py-3.5 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-inverse-surface transition-all group" href="#">
+<span>View Project Study</span>
+<span class="group-hover:translate-x-1 transition-transform">→</span>
+</a>
+<button class="inline-flex items-center gap-2 px-6 py-3.5 bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-wider hover:bg-surface-variant transition-colors" onclick="toggleModal('modal-specs')">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>Edition Details</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: CURATED MONOGRAPH ARCHIVE GRID -->
+<section class="relative z-10 w-full px-6 lg:px-12 py-16 max-w-[1360px] mx-auto">
+<div class="flex items-center justify-between mb-10 pb-4 border-b border-surface-container">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-1">Index &amp; Catalog</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Curated Catalogue of Editions</h3>
+</div>
+<div class="hidden sm:flex items-center gap-6 font-body-sm text-body-sm text-secondary">
+<span>Showing 6 of 24 Works</span>
+<span class="w-1 h-1 bg-secondary rounded-full"></span>
+<span>Archive Shelf 01-A</span>
+</div>
+</div>
+<!-- The Asymmetric Bespoke Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10" id="projects-grid">
+<!-- Project 01: Bound -->
+<article class="project-card group flex flex-col bg-surface-container-lowest transition-all hover:shadow-xl" data-category="bound">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 transition-transform duration-500" data-alt="Macro flat-lay photograph of antique cast lead letterpress types set in a composing stick, deep black ink impressions on heavy off-white handmade cotton rag paper, sharp typographic relief shadows, architectural editorial lighting, modernist German and Swiss grotesque specimens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4zUSthFD7UL0x_98NbDAj7uK3mCP2dsjRQPD7gmQm9TsplrQQqJK61Jk0nie8Jf69Nl0ND5O1j9jmNAXcmTjiCXNGbqbPFMPe9a976UJZkaVBwJZ16zd9cdCXntBEV0732KVdX3vZl0koufE6Gl56-EvbrTFPD7ZvBlNoEfZpssbHUfMHlYk-9er_2XyF8wSpqkEQCf6NQ8c2aLg6_UwXmWg0rAi-xlsDGcnY2VP6Lu7PhUKOVWbpXw"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">
+            PROJECT 01 / 2025
+          </div>
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase">
+            Bound Monograph
+          </div>
+</div>
+<div class="p-6 lg:p-8 flex flex-col flex-1">
+<div class="inline-block px-2 py-0.5 bg-surface-container-low text-secondary font-label-sm text-label-sm tracking-wider uppercase mb-3 w-fit">
+            Offset Lithography • 600 Copies
+          </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 group-hover:text-secondary transition-colors">
+            Tactile Type Archive: Mid-Century Grotesk Revivals
+          </h4>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed mb-6 flex-1">
+            Monochrome letterpress specimen documenting post-war European grotesk typefoundries with embossed relief plate foldouts and lead type macro studies.
+          </p>
+<div class="pt-4 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Vol. VI • 140pp</span>
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md font-medium text-primary hover:text-secondary transition-colors" href="#">
+<span>View Project Study</span>
+<span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 02: Field -->
+<article class="project-card group flex flex-col bg-surface-container-lowest transition-all hover:shadow-xl" data-category="field">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover contrast-105 group-hover:scale-105 transition-transform duration-500" data-alt="High-altitude minimalist contour map engraving printed on uncoated off-white Japanese mulberry paper, delicate vector contour lines tracing the Mont Blanc massif, topographic relief with stark light and precise geographic coordinates, Swiss cartographic perfection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMqhvwSAU0Mws9ZCCHYsIV1PtZfPtouYYYJwsoOPmXBi6chChyYGOSA0zcF3IYeZFZQKWwxr8EHroSIKHqA0geGOZiyOKyAjfovReWOS4ybVa0_4ogrELvEP5pE2dMQbY4zCcCtq9nPU6du5zoj3nu_lXneFFI_azqWbOiNA4KwMvU9j54ZoJRFWuekhDtry72skpru406wfqW0KwqRBkADb3CnGSkb6GmBNF6ACuSb0MwrTFbcVGs1w"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">
+            PROJECT 02 / 2024
+          </div>
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase">
+            Fieldwork Edition
+          </div>
+</div>
+<div class="p-6 lg:p-8 flex flex-col flex-1">
+<div class="inline-block px-2 py-0.5 bg-surface-container-low text-secondary font-label-sm text-label-sm tracking-wider uppercase mb-3 w-fit">
+            Foil-Stamped Slipcase • Uncoated Paper
+          </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 group-hover:text-secondary transition-colors">
+            Alpine Cartography Volume II: Glacial Recessions
+          </h4>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed mb-6 flex-1">
+            High-altitude elevation contour surveys rendered with minimalist vector precision on uncoated cotton stock, bound in cold-water immersion treated cloth.
+          </p>
+<div class="pt-4 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Boxed Set • 4 Maps</span>
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md font-medium text-primary hover:text-secondary transition-colors" href="#">
+<span>View Project Study</span>
+<span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 03: Bound -->
+<article class="project-card group flex flex-col bg-surface-container-lowest transition-all hover:shadow-xl" data-category="bound">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500" data-alt="Stark architectural black and white photograph of a monolithic board-marked brutalist concrete chapel nestled in the Swiss Valais alpine valley, harsh angular sunlight piercing an unglazed aperture, deep velvety geometric shadows, hyper-minimalist composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdriZlLqXTc-KhZtPwsNy5QnPQRwlUctE9vkT6R1MfPTalsJpcdfaXa3Nfu6pTobki42S7ANh5NGzfLTexflKdwlZ9oppESK6aTDYAEMorzpdk_sMbnZUCTOZE4QNBcxwdwFOIxMlbETYLQLCeIADwJC76Zoxx6BByAGmyUcNocLwQvm8CmUD6RmywJW0crzo_jjLjWNQjWI4x-1JfHMY_LuUtZUMmsQ4OT8OTVlUBFtVhpxCzBUYqAw"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">
+            PROJECT 03 / 2024
+          </div>
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase">
+            Bound Monograph
+          </div>
+</div>
+<div class="p-6 lg:p-8 flex flex-col flex-1">
+<div class="inline-block px-2 py-0.5 bg-surface-container-low text-secondary font-label-sm text-label-sm tracking-wider uppercase mb-3 w-fit">
+            Heavyweight Munken • Exposed Spine
+          </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 group-hover:text-secondary transition-colors">
+            Concrete Monolith: The Brutalist Chapels of Valais
+          </h4>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed mb-6 flex-1">
+            Black-and-white medium-format survey documenting seven post-conciliar concrete shrines constructed between 1958 and 1974 in remote Swiss cantons.
+          </p>
+<div class="pt-4 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Vol. V • 212pp</span>
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md font-medium text-primary hover:text-secondary transition-colors" href="#">
+<span>View Project Study</span>
+<span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 04: Spatial -->
+<article class="project-card group flex flex-col bg-surface-container-lowest transition-all hover:shadow-xl" data-category="spatial">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover contrast-105 group-hover:scale-105 transition-transform duration-500" data-alt="Close-up detail photograph of traditional Japanese timber joinery interlocking cedar beams without nails or fasteners, Sukiya-style pavilion interior in Kyoto, soft diffuse raked tatami sunlight, precision woodcraft, architectural monograph photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5P0Mzp066s6UhceBcDMutfoMf0hAzazZj50f4C0s2dhc-Yi7GFI4ra7c-U1IdaNcYPbjviMRtgkCgMwM0H1LvjJ10L7meE891T9n1Pc-KDeT5Jk8hBTVovzcDIOQgPbTqYnm0jPmjNR94-h1ULMrJjEcFPu8IPg27cPPC1fIzVauMJeYBtViaY4cQ-09ZY93zCoGgiKpJcl1Lica1yxFgGh0K56XKqdsyjCIcUc9OsWbvk5iRx7n_Zw"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">
+            PROJECT 04 / 2023
+          </div>
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase">
+            Spatial Installation
+          </div>
+</div>
+<div class="p-6 lg:p-8 flex flex-col flex-1">
+<div class="inline-block px-2 py-0.5 bg-surface-container-low text-secondary font-label-sm text-label-sm tracking-wider uppercase mb-3 w-fit">
+            Full-Scale Timber Structure • Kyoto
+          </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 group-hover:text-secondary transition-colors">
+            Kyoto Timber Pavilion: Jointing Techniques
+          </h4>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed mb-6 flex-1">
+            Measured structural drawings accompanied by an assembled demountable cedar tea pavilion testing gravity-locked structural joints.
+          </p>
+<div class="pt-4 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Measured Folio • 64pp</span>
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md font-medium text-primary hover:text-secondary transition-colors" href="#">
+<span>View Project Study</span>
+<span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 05: Field -->
+<article class="project-card group flex flex-col bg-surface-container-lowest transition-all hover:shadow-xl" data-category="field">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 transition-transform duration-500" data-alt="Atmospheric archival photograph of an offshore acoustic maritime fog horn horn installation on a windswept Scottish cliff edge, dense coastal sea fog, rusted steel parabolic horn, dramatic moody North Sea atmosphere, black and white fine art print" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUFPMJwo054tj_PSiDVsDM-OAAiNxEIrbwZxb3dhIChPTpBpsT30BL09oB8J2Ff-Y9dWYs2g0079KstaEWTOCJa-jzVQ2xSkrgWmZ7Q4EKk0J-HdatRaqY6EjG-dfpezrqr4wIYfA4mtnkklojN_0IBB7L-Qzd4J_fbLDOoMjCrYUkYCDuoH8aYJYlAPGsnUY_EAlwnlxk2jBAUgwrDIhcNYSM4GkGAiHuzapnbYwDJm3UJC42ecVnYw"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">
+            PROJECT 05 / 2023
+          </div>
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase">
+            Fieldwork Edition
+          </div>
+</div>
+<div class="p-6 lg:p-8 flex flex-col flex-1">
+<div class="inline-block px-2 py-0.5 bg-surface-container-low text-secondary font-label-sm text-label-sm tracking-wider uppercase mb-3 w-fit">
+            Archival Audio CD + Monograph
+          </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 group-hover:text-secondary transition-colors">
+            Maritime Wayfinding: Acoustic Fog Beacons
+          </h4>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed mb-6 flex-1">
+            An archival investigation into auditory coastal navigation before satellite telemetry, pairing field recordings with hydrographic charts.
+          </p>
+<div class="pt-4 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Audiovisual Set • 96pp</span>
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md font-medium text-primary hover:text-secondary transition-colors" href="#">
+<span>View Project Study</span>
+<span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 06: Bound -->
+<article class="project-card group flex flex-col bg-surface-container-lowest transition-all hover:shadow-xl" data-category="bound">
+<div class="relative w-full aspect-[4/3] overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover contrast-105 group-hover:scale-105 transition-transform duration-500" data-alt="Editorial flat-lay presentation of an oversized folded broadsheet newspaper printed on textured grey recycled paper, crisp modernist grid typography, architectural sketches and essays, tactile paper grain texture under soft studio daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPPuTBq1i6n-QNsnVMN2vv71aUUi3nMVx2vg16WhZ9a0pU7b-FELzEOZAz7dQnOrFIph3hwBd-pWUDoX7S9zAkN-nDIM5G7gDiK2x2Pkuwckwb1JxqK80fyp6bAho86YMvgw7mVLTPY2qat_rb8TelzI_Kk7hCaHmp2nOsX7SQIM6BP7E6ezmBDSVfyHM46Q5YeL1_pikpOdYyi3yQEzAgLl2IYDbe1Ckt3p4ep_F8ffkGUapb9Neo0Q"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">
+            PROJECT 06 / 2022
+          </div>
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase">
+            Bound Monograph
+          </div>
+</div>
+<div class="p-6 lg:p-8 flex flex-col flex-1">
+<div class="inline-block px-2 py-0.5 bg-surface-container-low text-secondary font-label-sm text-label-sm tracking-wider uppercase mb-3 w-fit">
+            55gsm Newsprint • 1,200 Copies
+          </div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 group-hover:text-secondary transition-colors">
+            Slow Press Gazette: An Annual Broadsheet
+          </h4>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed mb-6 flex-1">
+            An oversized eight-column foldout broadsheet investigating material resourcefulness, tactile typography, and independent distribution circuits.
+          </p>
+<div class="pt-4 border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Broadsheet • 32pp Fold</span>
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md font-medium text-primary hover:text-secondary transition-colors" href="#">
+<span>View Project Study</span>
+<span>→</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- SECTION 4: DATA VISUALIZATION / ARCHIVE PRODUCTION METRICS -->
+<section class="relative z-10 w-full px-6 lg:px-12 py-12 max-w-[1360px] mx-auto">
+<div class="bg-surface-container-low p-8 lg:p-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-2">Production Ledger</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Print Production Volumes (2020 — 2025)</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+            Monograph Studio limits publication editions to maintain exacting binder quality and ethical paper sourcing from sustainable European mills.
+          </p>
+<div class="flex items-center gap-8 font-label-md text-label-md">
+<div>
+<span class="block text-headline-md font-headline-md text-on-surface">14,800</span>
+<span class="text-secondary uppercase">Copies Bound</span>
+</div>
+<div class="w-px h-8 bg-surface-container"></div>
+<div>
+<span class="block text-headline-md font-headline-md text-on-surface">100%</span>
+<span class="text-secondary uppercase">Chlorine-Free Stock</span>
+</div>
+</div>
+</div>
+<!-- Inline SVG Visualization Chart (Production Cadence) -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-6 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-sm text-label-sm uppercase text-secondary">Annual Output by Edition Category</span>
+<div class="flex items-center gap-4 text-body-sm font-body-sm">
+<span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-primary"></span> Monographs</span>
+<span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-secondary"></span> Fieldworks</span>
+<span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 bg-outline-variant"></span> Special Prints</span>
+</div>
+</div>
+<svg class="w-full h-44" fill="none" viewbox="0 0 540 160" xmlns="http://www.w3.org/2000/svg">
+<!-- Grid Lines -->
+<line stroke="#edeeef" stroke-dasharray="2 2" x1="40" x2="520" y1="20" y2="20"></line>
+<line stroke="#edeeef" stroke-dasharray="2 2" x1="40" x2="520" y1="60" y2="60"></line>
+<line stroke="#edeeef" stroke-dasharray="2 2" x1="40" x2="520" y1="100" y2="100"></line>
+<line stroke="#c5c6ca" x1="40" x2="520" y1="140" y2="140"></line>
+<!-- Axis Labels -->
+<text fill="#75777b" font-family="Inter" font-size="10" x="15" y="24">3.5k</text>
+<text fill="#75777b" font-family="Inter" font-size="10" x="15" y="64">2.0k</text>
+<text fill="#75777b" font-family="Inter" font-size="10" x="15" y="104">1.0k</text>
+<text fill="#75777b" font-family="Inter" font-size="10" x="25" y="144">0</text>
+<!-- 2021 Bars -->
+<rect fill="#000000" height="70" width="16" x="70" y="70"></rect>
+<rect fill="#5e5e5e" height="40" width="16" x="90" y="100"></rect>
+<rect fill="#c5c6ca" height="25" width="16" x="110" y="115"></rect>
+<text fill="#191c1d" font-family="Inter" font-size="10" font-weight="600" x="86" y="156">2021</text>
+<!-- 2022 Bars -->
+<rect fill="#000000" height="90" width="16" x="160" y="50"></rect>
+<rect fill="#5e5e5e" height="55" width="16" x="180" y="85"></rect>
+<rect fill="#c5c6ca" height="35" width="16" x="200" y="105"></rect>
+<text fill="#191c1d" font-family="Inter" font-size="10" font-weight="600" x="176" y="156">2022</text>
+<!-- 2023 Bars -->
+<rect fill="#000000" height="100" width="16" x="250" y="40"></rect>
+<rect fill="#5e5e5e" height="65" width="16" x="270" y="75"></rect>
+<rect fill="#c5c6ca" height="45" width="16" x="290" y="95"></rect>
+<text fill="#191c1d" font-family="Inter" font-size="10" font-weight="600" x="266" y="156">2023</text>
+<!-- 2024 Bars -->
+<rect fill="#000000" height="115" width="16" x="340" y="25"></rect>
+<rect fill="#5e5e5e" height="80" width="16" x="360" y="60"></rect>
+<rect fill="#c5c6ca" height="60" width="16" x="380" y="80"></rect>
+<text fill="#191c1d" font-family="Inter" font-size="10" font-weight="600" x="356" y="156">2024</text>
+<!-- 2025 Projected -->
+<rect fill="#000000" height="125" width="16" x="430" y="15"></rect>
+<rect fill="#5e5e5e" height="95" width="16" x="450" y="45"></rect>
+<rect fill="#c5c6ca" height="70" width="16" x="470" y="70"></rect>
+<text fill="#191c1d" font-family="Inter" font-size="10" font-weight="600" x="442" y="156">2025 (Est)</text>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: PHYSICAL ARCHIVE SPECIFICATIONS & INSTITUTIONAL INQUIRIES -->
+<section class="relative z-10 w-full px-6 lg:px-12 py-16 max-w-[1360px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-surface-container-lowest p-8 lg:p-14 shadow-lg">
+<div class="lg:col-span-5 flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-2">Institutional Access</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-6">
+            Acquisitions &amp; Institutional Archives
+          </h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+            Monograph maintains a dedicated reserve of archival copies for museum collections, university architecture libraries, and academic research institutions.
+          </p>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-8">
+            Complete sets include boxed ephemera, hand-tipped photographic plates, press sheets, and bound printing proofs signed by the lead researchers.
+          </p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+<span class="font-label-md text-label-md text-on-surface uppercase">Library of Congress &amp; British Library Deposit Copies</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">inventory_2</span>
+<span class="font-label-md text-label-md text-on-surface uppercase">Acid-Free Clamshell Archival Housing Available</span>
+</div>
+</div>
+</div>
+<!-- Institutional Inquiry Form -->
+<div class="lg:col-span-7 bg-surface-container-low p-6 lg:p-10">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2">Request Institutional Catalog</h4>
+<p class="font-body-sm text-body-sm text-secondary mb-6">Direct dispatch to accredited librarians, curators, and institutional acquisition officers.</p>
+<form class="space-y-4" onsubmit="handleInquirySubmit(event)">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-secondary mb-1.5">Official Name</label>
+<input class="w-full bg-surface-container-lowest border-0 px-4 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary" placeholder="E.G. ELEANOR VANCE" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-secondary mb-1.5">Institution / Department</label>
+<input class="w-full bg-surface-container-lowest border-0 px-4 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary" placeholder="E.G. ETH ZÜRICH ARCHITECTURE LIBRARY" required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-secondary mb-1.5">Institutional Email</label>
+<input class="w-full bg-surface-container-lowest border-0 px-4 py-3 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary" placeholder="CURATOR@UNIVERSITY.EDU" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-secondary mb-1.5">Acquisition Interest</label>
+<select class="w-full bg-surface-container-lowest border-0 px-4 py-3 font-body-sm text-body-sm text-on-surface focus:ring-1 focus:ring-primary">
+<option>Complete Monograph Archive Set (2020-2025)</option>
+<option>Nordic Shelter Project Study Only</option>
+<option>Cartography &amp; Topographic Volumes</option>
+<option>Exhibition &amp; Travelling Loan Inquiries</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-secondary mb-1.5">Special Collection Notes</label>
+<textarea class="w-full bg-surface-container-lowest border-0 p-4 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary" placeholder="STATE CATALOGUING OR BINDING ACCESS REQUIREMENTS..." rows="3"></textarea>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-secondary" id="inquiry-status">Response turnaround: 48 business hours.</span>
+<button class="px-8 py-3.5 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-inverse-surface transition-colors" type="submit">
+              Submit Docket Request
+            </button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- MODAL: EDITION DETAILS SLIDEOUT / OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="modal-specs">
+<div class="bg-surface-container-lowest max-w-xl w-full mx-4 p-8 lg:p-10 shadow-2xl relative">
+<button class="absolute top-6 right-6 text-secondary hover:text-on-surface" onclick="toggleModal('modal-specs')">
+<span class="material-symbols-outlined">close</span>
+</button>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary block mb-2">Technical Dossier</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">
+        Nordic Pavilion Shelter Colophon
+      </h3>
+<div class="space-y-4 mb-8 font-body-sm text-body-sm">
+<div class="flex justify-between py-2 border-b border-surface-container">
+<span class="text-secondary">Paper Stock</span>
+<span class="font-medium text-on-surface">Munken Lynx 150gsm (Sweden)</span>
+</div>
+<div class="flex justify-between py-2 border-b border-surface-container">
+<span class="text-secondary">Endpapers</span>
+<span class="font-medium text-on-surface">Colorplan Dark Slate 135gsm</span>
+</div>
+<div class="flex justify-between py-2 border-b border-surface-container">
+<span class="text-secondary">Binding</span>
+<span class="font-medium text-on-surface">Section-sewn, natural linen spine</span>
+</div>
+<div class="flex justify-between py-2 border-b border-surface-container">
+<span class="text-secondary">Presswork</span>
+<span class="font-medium text-on-surface">Heidelberg Speedmaster XL 106</span>
+</div>
+<div class="flex justify-between py-2 border-b border-surface-container">
+<span class="text-secondary">Typography</span>
+<span class="font-medium text-on-surface">Playfair Display &amp; Inter Monospace</span>
+</div>
+<div class="flex justify-between py-2 border-b border-surface-container">
+<span class="text-secondary">Numbered Run</span>
+<span class="font-medium text-on-surface">Limited to 750 Stamped Copies</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-4">
+<button class="px-6 py-2.5 bg-surface-container text-on-surface font-label-md text-label-md uppercase tracking-wider" onclick="toggleModal('modal-specs')">
+          Close Dossier
+        </button>
+<a class="px-6 py-2.5 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider" href="#">
+          Download PDF Proof
+        </a>
+</div>
+</div>
+</div>
+<!-- EMBEDDED INTERACTION SCRIPT -->
+<script>
+    function filterProjects(category) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.classList.remove('bg-surface-container-low', 'text-secondary');
+          btn.classList.add('bg-primary', 'text-on-primary');
+        } else {
+          btn.classList.remove('bg-primary', 'text-on-primary');
+          btn.classList.add('bg-surface-container-low', 'text-secondary');
+        }
+      });
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function toggleModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal.classList.contains('pointer-events-none')) {
+        modal.classList.remove('pointer-events-none', 'opacity-0');
+        modal.classList.add('pointer-events-auto', 'opacity-100');
+      } else {
+        modal.classList.add('pointer-events-none', 'opacity-0');
+        modal.classList.remove('pointer-events-auto', 'opacity-100');
+      }
+    }
+
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const status = document.getElementById('inquiry-status');
+      status.innerText = 'Archival request submitted. Protocol identifier #ARC-8942 generated.';
+      status.classList.add('text-primary', 'font-medium');
+      setTimeout(() => {
+        e.target.reset();
+      }, 1500);
+    }
+  </script>
+</div>
+</main>
+<!-- ARCHIVAL MINIMALIST FOOTER -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container py-space-lg">
+<div class="max-w-[1320px] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+<span class="font-body-sm text-body-sm text-secondary">
+        © 2025 Monograph Publishing Archive. Architectural purity in print &amp; screen.
+      </span>
+<div class="flex items-center gap-6">
+<span class="font-label-sm text-label-sm uppercase text-secondary">
+          All Rights Reserved
+        </span>
+<span class="font-label-sm text-label-sm uppercase text-secondary">
+          ISSN 2491-081X
+        </span>
+</div>
+</div>
+</footer>
+</body></html>

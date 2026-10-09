@@ -4,6 +4,7 @@ date: "2018-11-02"
 image: "/showcase/slide-3.jpg"
 alt: "Mountain peaks catching the first light of sunrise"
 excerpt: "A field journal of granite ridges, falling temperatures, and the quiet clarity of the alpine treeline. Notes from a journey made just before the seasons turn."
+category: "Field Studies"
 featured: true
 ---
 

@@ -3,5 +3,9 @@
   "year": "2024",
   "title": "Nordic Pavilion Shelter",
   "description": "Field study examining micro-climates, raw larch timber joints, and seasonal light permeability in Lofoten.",
-  "href": null
+  "href": null,
+  "image": "/showcase/slide-3.jpg",
+  "alt": "Mountain peaks catching the first light of sunrise",
+  "category": "Architectural Fieldworks",
+  "featured": true
 }

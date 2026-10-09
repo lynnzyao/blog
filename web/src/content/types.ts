@@ -6,6 +6,7 @@ export type PostSummary = {
   image: string;
   alt: string;
   excerpt: string;
+  category: string;
   featured: boolean;
   readingMinutes: number;
   href: string;
@@ -13,6 +14,11 @@ export type PostSummary = {
 
 export type Project = {
   slug: string;
+  image?: string;
+  alt?: string;
+  category: string;
+  featured: boolean;
+  specifications?: string;
   number: string;
   year: string;
   title: string;

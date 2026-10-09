@@ -3,5 +3,9 @@
   "year": "2023",
   "title": "Alpine Cartography Volume II",
   "description": "High-altitude elevation contour maps rendered with minimalist vector precision on uncoated cotton paper.",
-  "href": null
+  "href": null,
+  "image": "/showcase/slide-2.jpg",
+  "alt": "An alpine lake beneath snow-covered mountains",
+  "category": "Field Studies",
+  "featured": false
 }

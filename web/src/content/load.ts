@@ -15,6 +15,11 @@ function requiredString(data: Record<string, unknown>, key: string, file: string
   return value;
 }
 
+function optionalString(data: Record<string, unknown>, key: string, file: string) {
+  if (data[key] === undefined) return undefined;
+  return requiredString(data, key, file);
+}
+
 function slugFromFile(file: string, extension: string) {
   const slug = file.slice(0, -extension.length);
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
@@ -48,6 +53,7 @@ export const getPosts = cache(() => {
       image,
       alt: requiredString(data, "alt", file),
       excerpt: requiredString(data, "excerpt", file),
+      category: optionalString(data, "category", file) ?? "Journal",
       featured: data.featured === true,
       readingMinutes: Math.max(1, Math.ceil(content.trim().split(/\s+/).length / 200)),
       href: `/posts/${slug}/`,
@@ -65,8 +71,20 @@ export const getProjects = cache((): Project[] => {
     if (typeof href !== "string" || !(href.startsWith("/") && !href.startsWith("//")) && !/^https?:\/\//.test(href)) {
       throw new Error(`${file}: href must be a local path, an http(s) URL, or null`);
     }
+    const image = optionalString(data, "image", file);
+    if (image && (!image.startsWith("/") || image.startsWith("//"))) {
+      throw new Error(`${file}: image must be a path inside public, starting with /`);
+    }
+    if (data.featured !== undefined && typeof data.featured !== "boolean") {
+      throw new Error(`${file}: featured must be true or false`);
+    }
     return {
       slug,
+      image,
+      alt: image ? requiredString(data, "alt", file) : undefined,
+      category: optionalString(data, "category", file) ?? "Projects",
+      featured: data.featured === true,
+      specifications: optionalString(data, "specifications", file),
       number: requiredString(data, "number", file),
       year: requiredString(data, "year", file),
       title: requiredString(data, "title", file),

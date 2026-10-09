@@ -4,6 +4,7 @@ date: "2018-09-08"
 image: "/showcase/slide-1.jpg"
 alt: "A lone canoe floating on a still mountain lake"
 excerpt: "Making room for slower observations and stories worth keeping. A reflection on independent publishing, personal archives, and the simple practice of paying attention."
+category: "Slow Media & Culture"
 featured: true
 ---
 

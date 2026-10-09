@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      overscroll-behavior: none;
+    }
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary": "#000000",
+          "inverse-primary": "#c3c7cc",
+          "surface-dim": "#d9dadb",
+          "on-primary-container": "#808489",
+          "primary-container": "#181c20",
+          "inverse-surface": "#2e3132",
+          "on-secondary-fixed": "#1b1c1c",
+          "on-primary-fixed": "#181c20",
+          "error": "#ba1a1a",
+          "secondary-container": "#e3e2e2",
+          "primary-fixed": "#e0e3e8",
+          "surface-container": "#edeeef",
+          "surface-variant": "#e1e3e4",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed": "#f0dfd5",
+          "surface-container-highest": "#e1e3e4",
+          "on-tertiary-fixed": "#221a14",
+          "on-surface-variant": "#44474a",
+          "on-error": "#ffffff",
+          "secondary": "#5e5e5e",
+          "secondary-fixed-dim": "#c7c6c6",
+          "outline": "#75777b",
+          "on-secondary-fixed-variant": "#464747",
+          "on-primary-fixed-variant": "#43474c",
+          "surface-container-high": "#e7e8e9",
+          "on-tertiary-fixed-variant": "#4f453d",
+          "background": "#f8f9fa",
+          "surface-tint": "#5b5f63",
+          "on-background": "#191c1d",
+          "on-error-container": "#93000a",
+          "primary": "#000000",
+          "secondary-fixed": "#e3e2e2",
+          "primary-fixed-dim": "#c3c7cc",
+          "surface-bright": "#f8f9fa",
+          "tertiary-fixed-dim": "#d3c4ba",
+          "on-surface": "#191c1d",
+          "surface-container-low": "#f3f4f5",
+          "tertiary-container": "#221a14",
+          "outline-variant": "#c5c6ca",
+          "surface": "#f8f9fa",
+          "error-container": "#ffdad6",
+          "on-secondary-container": "#646464",
+          "inverse-on-surface": "#f0f1f2",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary": "#ffffff",
+          "on-primary": "#ffffff",
+          "on-tertiary-container": "#8e8179"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "space-xs": "0.25rem",
+          "gutter": "2rem",
+          "space-lg": "1.75rem",
+          "space-md": "1rem",
+          "margin": "4rem",
+          "space-xl": "3rem"
+        },
+        "fontFamily": {
+          "headline-sm": ["Playfair Display", "serif"],
+          "display-lg": ["Playfair Display", "serif"],
+          "headline-md": ["Playfair Display", "serif"],
+          "body-md": ["Inter", "sans-serif"],
+          "headline-lg-mobile": ["Playfair Display", "serif"],
+          "display-lg-mobile": ["Playfair Display", "serif"],
+          "label-sm": ["Inter", "sans-serif"],
+          "label-lg": ["Inter", "sans-serif"],
+          "body-sm": ["Inter", "sans-serif"],
+          "label-md": ["Inter", "sans-serif"],
+          "body-lg": ["Inter", "sans-serif"],
+          "headline-lg": ["Playfair Display", "serif"]
+        },
+        "fontSize": {
+          "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+          "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+          "headline-md": ["22px", {"lineHeight": "30px", "fontWeight": "500"}],
+          "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+          "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+          "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+          "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+          "label-lg": ["13px", {"lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+          "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+          "label-md": ["11px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="min-h-screen bg-background text-on-surface antialiased font-body-md selection:bg-primary selection:text-on-primary">
+<!-- TOP ARCHIVAL HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-surface-container">
+<div class="h-20 max-w-[1320px] mx-auto px-6 lg:px-8 flex items-center justify-between">
+<!-- Left: Solid Black Block Wordmark -->
+<a class="flex items-center self-stretch" data-path="home" href="#" title="Monograph Home">
+<div class="h-full px-6 bg-primary text-on-primary flex items-center justify-center font-headline-sm text-headline-sm tracking-widest uppercase">
+          MONOGRAPH
+        </div>
+</a>
+<!-- Right: Words-only Navigation -->
+<nav class="flex items-center gap-8 md:gap-12" data-active-classes="text-on-surface border-b-2 border-primary pb-0.5 font-semibold">
+<a class="font-label-lg text-label-lg tracking-wide text-secondary hover:text-on-surface transition-colors duration-150" data-path="home" href="#">Home</a>
+<a aria-current="page" class="tracking-wide transition-colors duration-150 text-on-surface border-b-2 border-primary pb-0.5 font-semibold" data-path="all-posts" href="#">All Posts</a>
+<a class="font-label-lg text-label-lg tracking-wide text-secondary hover:text-on-surface transition-colors duration-150" data-path="all-projects" href="#">Projects</a>
+</nav>
+</div>
+</header>
+<!-- MAIN CONTENT CONTAINER (pt-20 matches header h-20 exactly) -->
+<main class="pt-20 min-h-[calc(100vh-80px)] w-full">
+<div class="flex flex-col w-full relative">
+<!-- ATMOSPHERIC BACKGROUND Z-INDEX LAYER -->
+<div class="absolute inset-0 pointer-events-none -z-10 flex justify-between overflow-hidden">
+<div class="w-16 md:w-32 bg-surface-container-high/40 h-full"></div>
+<div class="w-px bg-surface-variant h-full hidden lg:block"></div>
+<div class="w-48 bg-surface-container-low/60 h-full hidden xl:block"></div>
+<div class="w-20 md:w-40 bg-surface-container/50 h-full"></div>
+</div>
+<!-- MAIN ARCHIVE WRAPPER -->
+<div class="w-full max-w-[1320px] mx-auto px-6 lg:px-8 py-10 md:py-16">
+<!-- PAGE INTRO & META INDEX -->
+<header class="relative mb-14 md:mb-20">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 bg-surface-container-lowest p-8 shadow-sm">
+<div class="max-w-2xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="inline-block w-2.5 h-2.5 bg-primary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">ARCHIVE VOLUME IV — ANTHOLOGY</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface tracking-tight mb-4">
+            The Archive
+          </h1>
+<p class="font-body-lg text-body-lg text-secondary leading-relaxed">
+            Essays, dispatches, and contemplative inquiries into typography, material culture, and spatial philosophy. Curated for the slow, analytical reader.
+          </p>
+</div>
+<!-- Archive Stats Telemetry -->
+<div class="flex md:flex-col items-end justify-between md:justify-end gap-2 text-right">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">TOTAL INDEXED</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-light">48 Dispatches</span>
+<span class="font-body-sm text-body-sm text-secondary">Updated Bi-weekly</span>
+</div>
+</div>
+<!-- FILTER CONTROLS & DISPLAY TOGGLES -->
+<div class="mt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-surface-container-low p-4 md:px-6">
+<!-- Topic Pills (Text links with active highlight) -->
+<div class="flex flex-wrap items-center gap-x-6 gap-y-3" id="topic-filters">
+<button class="font-label-md text-label-md uppercase tracking-wider text-on-primary bg-primary px-3 py-1.5 transition-colors">
+            All Topics (48)
+          </button>
+<button class="font-label-md text-label-md uppercase tracking-wider text-secondary hover:text-on-surface transition-colors">
+            Architecture &amp; Space (16)
+          </button>
+<button class="font-label-md text-label-md uppercase tracking-wider text-secondary hover:text-on-surface transition-colors">
+            Typography &amp; Print (14)
+          </button>
+<button class="font-label-md text-label-md uppercase tracking-wider text-secondary hover:text-on-surface transition-colors">
+            Slow Media &amp; Culture (12)
+          </button>
+<button class="font-label-md text-label-md uppercase tracking-wider text-secondary hover:text-on-surface transition-colors">
+            Field Studies (6)
+          </button>
+</div>
+<!-- Controls: Sort & Layout -->
+<div class="flex items-center gap-6 self-end lg:self-auto">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Sort:</span>
+<select aria-label="Sort order" class="bg-surface-container-lowest text-on-surface font-label-md text-label-md px-3 py-1 uppercase tracking-wider focus:outline-none focus:bg-surface-bright">
+<option>Chronological (Newest)</option>
+<option>Chronological (Oldest)</option>
+<option>Most Read</option>
+<option>Reading Duration</option>
+</select>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Grid View" class="p-1.5 bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors" title="Grid View">
+<span class="material-symbols-outlined text-[18px] leading-none">grid_view</span>
+</button>
+<button aria-label="List View" class="p-1.5 text-secondary hover:text-on-surface transition-colors" title="List View">
+<span class="material-symbols-outlined text-[18px] leading-none">view_agenda</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- FEATURED ARCHIVE ESSAY (Layered Overlap Hero Feature) -->
+<section class="relative mb-24 md:mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 relative items-center">
+<!-- Media Backdrop Card (Columns 4-12) -->
+<div class="lg:col-span-9 lg:col-start-4 relative overflow-hidden bg-surface-container-high h-[360px] md:h-[520px] shadow-md">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Monolithic brutalist concrete chapel sanctuary interior in overcast Northern Europe. Soft natural light shafts descending from narrow slit windows, stone floor, minimalist wooden prayer bench, serene and tactile architectural atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CK5hradfYXLnsrKy1ymB8tpFO_L0xC9J5vczbH7SARzwaarPgoUqmrRkllQ38T0nvNvtu-5OSqr4B2uVFFjt2N-h41cNKaZnt2gX0yYyMdoQHqeRkNNX9c3h1lcIwyqwX7fKmurcEoalKt_R50TxzQuM5J6zDCmFMmDPmFW2d_tUBPTDwcUZqaJipfj29VrPdlvjP3szgP2qY38TvUNLSOOM2v8IXQdJJaqlS8Yy4qoWJ6OIJDR6VA"/>
+<div class="absolute inset-0 bg-primary/20"></div>
+<!-- Image Tag Floating in Corner -->
+<div class="absolute top-4 right-4 bg-primary-container text-on-primary px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest">
+            FEATURED DISPATCH • ISSUE 28
+          </div>
+</div>
+<!-- Overlapping Placard Layer (Columns 1-6) -->
+<div class="lg:col-span-6 lg:col-start-1 -mt-16 lg:mt-0 relative z-20 mx-4 lg:mx-0">
+<div class="bg-surface-container-lowest p-8 md:p-12 shadow-xl">
+<div class="flex items-center gap-4 mb-4">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">OCTOBER 14, 2024</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">ARCHITECTURE &amp; SPACE</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4 leading-tight">
+              The Architecture of Silence: Monastic Sanctuaries and Unadorned Spaces
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+              Examining tactile resonance, acoustics of stone, and spatial minimalism in post-war Nordic chapels. How reduction in ornamental clutter restores contemplative cognitive bandwidth in high-velocity societies.
+            </p>
+<div class="flex items-center justify-between pt-4 bg-surface-container-low px-4 py-3">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">11 MIN READ</span>
+<a class="inline-flex items-center gap-2 font-label-lg text-label-lg font-medium text-primary hover:text-secondary group transition-colors" href="#">
+<span>Read Article</span>
+<span class="transition-transform group-hover:translate-x-1">→</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION TITLE STRIP -->
+<div class="flex items-center justify-between mb-10 pb-4 bg-surface-container-low px-4">
+<div class="flex items-center gap-3">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">CHRONOLOGICAL DISPATCHES</span>
+<span class="text-secondary font-label-sm text-label-sm">/ 2023—2024</span>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">SHOWING 1–6 OF 48 ENTRIES</span>
+</div>
+<!-- CHRONOLOGICAL EDITORIAL POSTS GRID (3 Columns x 2 Rows) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mb-24">
+<!-- POST ITEM 1 -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[16/10] overflow-hidden bg-surface-container-high shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Macro close-up shot of hand-set metal movable lead types and wood letterpress blocks stacked on wooden compose stick in traditional printmaker workshop. Warm diffused raking light, dark ink stains, tactile textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ4B-2nFbEJ5_NDTpTS06kS_BC9TCmRnL7EVp2Xs2NuOf6eff3zgBYrhwOgD-0XG3kn47Yncqev3PmjO6xroFFsARHnWcYFq8VkwZiWQaijsniCYPWDpJ2LV3A6nkcvDPLxG7CvpO5H8cZaRKEsSh8tLmP8faFIwP7TbFNME5zxFKmcv_P-9TPlJak0KS1NesIt4BJGQMKQBy61piwaBCMg3xcxAl4kO20fRW4AxKdwi7wXpOVVnxbVA"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm">
+            TYPOGRAPHY
+          </div>
+</div>
+<!-- Overlapping Dark Title Banner -->
+<div class="bg-primary-container text-on-primary px-5 py-3 -mt-6 ml-4 mr-6 relative z-10 shadow-lg">
+<h3 class="font-headline-sm text-headline-sm leading-snug line-clamp-2">
+            Letterpress in the Digital Periphery: Preserving Movable Type
+          </h3>
+</div>
+<!-- Editorial Content Below -->
+<div class="p-4 pt-5 flex flex-col flex-1 justify-between bg-surface-container-lowest shadow-sm mt-1">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+            A master-apprentice dispatch from a remote workshop in Leipzig, documenting physical ink viscosity, lead alloys, and the irreplaceable weight of physical mechanical impression.
+          </p>
+<div class="flex items-center justify-between text-secondary pt-3 bg-surface-container-low px-3 py-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">7 MIN READ</span>
+<a class="font-label-md text-label-md text-primary font-medium group-hover:underline inline-flex items-center gap-1" href="#">
+              Read <span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- POST ITEM 2 -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[16/10] overflow-hidden bg-surface-container-high shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Steep jagged Alpine granite ridge engulfed in heavy drifting mist and clouds. Small modern zinc and timber shelter perched on sheer precipice in Julian Alps, moody, desaturated monochrome landscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXAUNFI8BEHFbk0X-cDOX1BM6tjamNbhaKThNdCHx8inLx-9sgU9avZ9vzhOh0coRuOV1EHnwDPhyDxn_jkhbklc-qum8MzzxCVgWcz6_KEA2eSL9WyiNhFHMjFwJMjIO0e_czn7UwTBpUo4UQw9AxP_4RRfcE-mTBalSVYz1BCrbJgFMZGos92jzpgvmBeavofN_Z3lKvyqqfUSg1Td67YhWIuNDg-s7bc7pB7UoGJVbYFJg_-CXMoQ"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm">
+            FIELD STUDIES
+          </div>
+</div>
+<!-- Overlapping Dark Title Banner -->
+<div class="bg-primary-container text-on-primary px-5 py-3 -mt-6 ml-4 mr-6 relative z-10 shadow-lg">
+<h3 class="font-headline-sm text-headline-sm leading-snug line-clamp-2">
+            Granite and Fog: High-Altitude Shelters in the Julian Alps
+          </h3>
+</div>
+<!-- Editorial Content Below -->
+<div class="p-4 pt-5 flex flex-col flex-1 justify-between bg-surface-container-lowest shadow-sm mt-1">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+            Structural analysis of bivouac architecture built to withstand gale force mountain winds at 2,500 meters altitude with minimal ecological footfall.
+          </p>
+<div class="flex items-center justify-between text-secondary pt-3 bg-surface-container-low px-3 py-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">5 MIN READ</span>
+<a class="font-label-md text-label-md text-primary font-medium group-hover:underline inline-flex items-center gap-1" href="#">
+              Read <span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- POST ITEM 3 -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[16/10] overflow-hidden bg-surface-container-high shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Minimalist study table with a single open clothbound diary, a matte black fountain pen, and a warm directional reading lamp casting sharp shadows in a dim wooden room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcw-ywWfyyvLILWTCy5IcL-3H_KrxtjcpxbraXcbw5kQ3-GCrtmh7OuJ0TAmHPfNZ9PSsEXHfunFbKlzMIUlc72bPKw98MQ41gkY1QXsHuObQLdtriDv0lGsAfg-R_XJ72N_so-k8LNAbdEhRQ0LJ8Q_S4g249WE3AsqHN4gwPCCCeAZAlbzSIvXloOUJARyXJtdP3fO3AmwtVDo2T5SzKlCUnVQwgg6d7zfhuz_-_yfTdfCypJabn8g"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm">
+            SLOW MEDIA
+          </div>
+</div>
+<!-- Overlapping Dark Title Banner -->
+<div class="bg-primary-container text-on-primary px-5 py-3 -mt-6 ml-4 mr-6 relative z-10 shadow-lg">
+<h3 class="font-headline-sm text-headline-sm leading-snug line-clamp-2">
+            The Death of the Algorithm Feed: Building Personal Hypertexts
+          </h3>
+</div>
+<!-- Editorial Content Below -->
+<div class="p-4 pt-5 flex flex-col flex-1 justify-between bg-surface-container-lowest shadow-sm mt-1">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+            Why independent web journals and static personal weblogs provide the necessary antidote to algorithmic dopamine loops and homogenized digital public squares.
+          </p>
+<div class="flex items-center justify-between text-secondary pt-3 bg-surface-container-low px-3 py-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">9 MIN READ</span>
+<a class="font-label-md text-label-md text-primary font-medium group-hover:underline inline-flex items-center gap-1" href="#">
+              Read <span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- POST ITEM 4 -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[16/10] overflow-hidden bg-surface-container-high shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Japanese traditional woodworking tools, kanna hand planes, fine cedar shavings resting on an unfinished hinoki wood timber bench in an old Kyoto atelier, soft morning shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbiP3FN9vtVs8PznV3RJN3lx0pHiEWVZLSmDzZJAFbRsk_LXmJV5yCNiPwryB6uH0rmDn_rZaSmRf9qW02pwKqoS85CEhLFtYS79C0lbpQJru6dVh1_59pxguggBElYVy70r7vOrgTR9ln0lcSkIphFXJxa6v6pBV7aq-QlNHNQg4xBHgxUn9haNVvyzx1QukFPeUh_ZMwPy7JViXavMHxV7-b1pDPeBLFiIJgkuzZJ_rbpn_oKbPG5g"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm">
+            MATERIAL CULTURE
+          </div>
+</div>
+<!-- Overlapping Dark Title Banner -->
+<div class="bg-primary-container text-on-primary px-5 py-3 -mt-6 ml-4 mr-6 relative z-10 shadow-lg">
+<h3 class="font-headline-sm text-headline-sm leading-snug line-clamp-2">
+            Tactile Inquiries into Wabi-Sabi Woodworking in Kyoto
+          </h3>
+</div>
+<!-- Editorial Content Below -->
+<div class="p-4 pt-5 flex flex-col flex-1 justify-between bg-surface-container-lowest shadow-sm mt-1">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+            Observing joinery techniques that bypass metal fasteners, allowing centuries of climatic expansion and contraction while celebrating natural grain fissures.
+          </p>
+<div class="flex items-center justify-between text-secondary pt-3 bg-surface-container-low px-3 py-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">6 MIN READ</span>
+<a class="font-label-md text-label-md text-primary font-medium group-hover:underline inline-flex items-center gap-1" href="#">
+              Read <span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- POST ITEM 5 -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[16/10] overflow-hidden bg-surface-container-high shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Expansive frozen tundra landscape under an indigo Arctic dusk, a solitary weathered wooden navigational beacon casting long faint shadow across crusted snow, minimalist and desolate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVe2aNwL0eXJLpnXbjO6uNH9ySKNeXKWIuXiw57qkdX6eNCnlJbp7UwdEefsSqyABIDTJgT7aGOTuKod96atXnK1mBOf_eKCPCvwE5LcX-CSbA0WaS9-e7aqCWmEa1xhjmvL97TAwLDvJOlaPudU5XujqYQuO4_TRyvEGujmyIv-lCnEknHSV74OLeCZrzL8eRBAl8uxFuoeEF6Yo461YdfAbbM2YxlenWnHsqONRnXR6n0HJ0u_JQCA"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm">
+            FIELD STUDIES
+          </div>
+</div>
+<!-- Overlapping Dark Title Banner -->
+<div class="bg-primary-container text-on-primary px-5 py-3 -mt-6 ml-4 mr-6 relative z-10 shadow-lg">
+<h3 class="font-headline-sm text-headline-sm leading-snug line-clamp-2">
+            Cartography of Forgotten Waypoints across the Arctic Circle
+          </h3>
+</div>
+<!-- Editorial Content Below -->
+<div class="p-4 pt-5 flex flex-col flex-1 justify-between bg-surface-container-lowest shadow-sm mt-1">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+            Tracing early 20th-century polar survey maps against present-day glacial retreat in Northern Svalbard, exploring the poetry of ephemeral navigation.
+          </p>
+<div class="flex items-center justify-between text-secondary pt-3 bg-surface-container-low px-3 py-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">12 MIN READ</span>
+<a class="font-label-md text-label-md text-primary font-medium group-hover:underline inline-flex items-center gap-1" href="#">
+              Read <span>→</span>
+</a>
+</div>
+</div>
+</article>
+<!-- POST ITEM 6 -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[16/10] overflow-hidden bg-surface-container-high shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Architectural detail of an exposed board-marked cast concrete wall with geometric sans-serif Helvetica numerals carved cleanly into the surface, sharp shadows, Zurich museum facade." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2IhkOmqqflO99qHDgzdxDyACNH5RyCwtBMHK-DjCYefNHogoK_ulEndkVCzp009AP4M1VkWTbaoaLD4PPuXJgnPa7pwH-qyko7gYBYvsAk8W3O5PLI60nDaUkuya4Rg4c5hW9gbHNl8jNo6J2qYvXBJSxKBHJSmjsTuq47brHb5-Pp87pVUFs0jDiREAf_uYot7Bj-Bi3UmheaR0G0Bq3-fpsVhpKCOnwhjKXLnsZTgrlD3seKocsqA"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 px-2.5 py-1 text-on-surface font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm">
+            ARCHITECTURE &amp; SPACE
+          </div>
+</div>
+<!-- Overlapping Dark Title Banner -->
+<div class="bg-primary-container text-on-primary px-5 py-3 -mt-6 ml-4 mr-6 relative z-10 shadow-lg">
+<h3 class="font-headline-sm text-headline-sm leading-snug line-clamp-2">
+            Form Follows Typography: The Swiss Grid in Modern Concrete
+          </h3>
+</div>
+<!-- Editorial Content Below -->
+<div class="p-4 pt-5 flex flex-col flex-1 justify-between bg-surface-container-lowest shadow-sm mt-1">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+            How the typographic proportions formulated by Josef Müller-Brockmann directly dictated the window bays and modular joints of mid-century Swiss civil engineering.
+          </p>
+<div class="flex items-center justify-between text-secondary pt-3 bg-surface-container-low px-3 py-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest">8 MIN READ</span>
+<a class="font-label-md text-label-md text-primary font-medium group-hover:underline inline-flex items-center gap-1" href="#">
+              Read <span>→</span>
+</a>
+</div>
+</div>
+</article>
+</section>
+<!-- ARCHIVE PAGINATION & INDEXING -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-6 py-6 px-8 bg-surface-container-lowest shadow-sm mb-24">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">ARCHIVE NAVIGATOR</span>
+<span class="text-secondary">•</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">PAGE 01 OF 08</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-2 text-secondary opacity-40 cursor-not-allowed font-label-md text-label-md uppercase tracking-wider">
+          Previous
+        </button>
+<div class="flex items-center gap-1 mx-2">
+<button class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md font-semibold">
+            1
+          </button>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md">
+            2
+          </button>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md">
+            3
+          </button>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md">
+            4
+          </button>
+<span class="px-2 text-secondary font-label-sm text-label-sm">...</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md">
+            8
+          </button>
+</div>
+<button class="px-3 py-2 text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md uppercase tracking-wider inline-flex items-center gap-1">
+          Next <span>→</span>
+</button>
+</div>
+</div>
+<!-- MANIFESTO & NEWSLETTER TOUCHPOINT (Print Broadside Aesthetic) -->
+<section class="bg-primary-container text-on-primary p-8 md:p-16 relative overflow-hidden mb-16 shadow-xl">
+<!-- Asymmetric accent background geometry -->
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-on-primary-container/10 rounded-full pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+<div class="lg:col-span-7">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary-container block mb-3">
+            THE PRINT &amp; DIGITAL COMPENDIUM
+          </span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-primary mb-4 leading-snug">
+            Subscribe to the Monograph Fortnightly Gazette
+          </h2>
+<p class="font-body-md text-body-md text-on-primary-container max-w-xl leading-relaxed">
+            Every other Tuesday, we transmit one uncompressed essay, high-resolution architectural scans, and our editor's physical reading list directly to your terminal. Zero spam. Unadorned prose.
+          </p>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-3">
+<form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault(); document.getElementById('sub-success').classList.remove('hidden'); this.classList.add('hidden');">
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-secondary font-label-sm text-label-sm uppercase tracking-wider px-4 py-3 border-0 focus:outline-none focus:ring-0" placeholder="ENTER RECIPIENT EMAIL..." required="" type="email"/>
+<button class="bg-on-tertiary text-tertiary px-6 py-3 font-label-md text-label-md uppercase tracking-widest font-semibold hover:bg-secondary-fixed transition-colors whitespace-nowrap shadow-sm" type="submit">
+              Dispatch
+            </button>
+</form>
+<div class="hidden bg-surface-container-lowest text-on-surface p-4 text-center" id="sub-success">
+<span class="font-label-md text-label-md uppercase tracking-widest font-semibold">You have been indexed into our dispatch registry.</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-[14px] text-on-primary-container">lock</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">Archival privacy strictly guaranteed. ISSN 2491-081X.</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<script>
+  // Topic Filter Tab Selection Toggle
+  document.querySelectorAll('#topic-filters button').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('#topic-filters button').forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-on-primary');
+        btn.classList.add('text-secondary');
+      });
+      button.classList.add('bg-primary', 'text-on-primary');
+      button.classList.remove('text-secondary');
+    });
+  });
+</script>
+</main>
+<!-- ARCHIVAL MINIMALIST FOOTER -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-container py-space-lg">
+<div class="max-w-[1320px] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+<span class="font-body-sm text-body-sm text-secondary">
+        © 2025 Monograph Publishing Archive. Architectural purity in print &amp; screen.
+      </span>
+<div class="flex items-center gap-6">
+<span class="font-label-sm text-label-sm uppercase text-secondary">
+          All Rights Reserved
+        </span>
+<span class="font-label-sm text-label-sm uppercase text-secondary">
+          ISSN 2491-081X
+        </span>
+</div>
+</div>
+</footer>
+</body></html>
